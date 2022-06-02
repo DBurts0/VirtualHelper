@@ -10,7 +10,7 @@ string us;
 string subject;
 string info;
 string userIn;
-string userIn2;
+string userIn2 = "yes";
 void AIHelper()
 {
     fstream iFile("input.txt");
@@ -33,7 +33,8 @@ QUESTION:
         cout << "What is your name?\n";
         cin >> us;
         cout << "Hello " << us << endl;
-        cout << "What do you want me to remember?\n";
+        HELP:
+        cout << "What do you want me to remember? Type help for options\n";
         cin >> subject;
         if (subject == "age")
         {
@@ -90,12 +91,19 @@ QUESTION:
             cin >> other;
             cout << "\n What do you want me to remember about the " << other << "?\n";
             cin >> info;
-            cout << "I will remember " << other << " and " << info;
+            cout << "I will remember " << other << " and " << info << endl;
             subject.append(other);
             subject.append(" ");
             subject.append(info);
         }
+        else if (subject == "help")
+        {
+            cout << "Available commands: age, item, shopping, appointment, other.\n ";
+            goto HELP;
+        }
+        subject.append("\n");
         iFile << subject;
+
         iFile.close();
     }
     else
@@ -111,6 +119,10 @@ int main()
         AIHelper();
         cout << "Would you like to continue?\n";
         cin >> userIn2;
+        while (userIn2 != "yes" && userIn2 != "no")
+        {
+            cout << "Invalid response. Type yes or no\n";
+        }
     }
 }
 
