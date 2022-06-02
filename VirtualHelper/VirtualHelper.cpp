@@ -71,7 +71,7 @@ QUESTION:
             subject.append(" ");
             subject.append(info);
         }
-        // remember where an item was placed
+        // remember where and when the user's appointment is
         else if (subject == "appointment")
         {
             subject.append(" ");
@@ -96,7 +96,7 @@ QUESTION:
 
             subject.append("\n");
         }
-        // remember another piece of information
+        // remember a different piece of information
         else if (subject == "other")
         {
             subject.append(" ");
@@ -130,6 +130,7 @@ QUESTION:
 }
 int main()
 {
+    // check if the user wishes to continue
     while (userIn2 != "no")
     {
         AIHelper();
